@@ -2,7 +2,6 @@
 # REPLACE POSESSION STUFF IN DOUBLE QUOTATIONS WITH WHATEVER STAT YOU ARE WORKING WITH
 # CHANGE TITLES, LABELS ETC
 
-
 import matplotlib.pyplot as plt 
 import pandas as pd
 import os 
@@ -34,32 +33,26 @@ for i in range(len(x)):
    statistic[df.loc[i, "team1"]]+=df.loc[i, "possession team1"]
    statistic[df.loc[i, "team2"]]+=df.loc[i, "possession team2"]
 
-   
-  
 cols = ['statName']
 
-
-statistic = pd.DataFrame.from_dict(statistic, orient='index', columns=cols)
-y_statistic = statistic["statName"]
-statistic.reset_index(inplace=True)
-statistic.rename(columns={"index": "Country"}, inplace=True)
-x_statistic = []
+dfstatistic = pd.DataFrame.from_dict(statistic, orient='index', columns= cols)
 
 
-for i in range(len(y_statistic)):
-  x_statistic.append(i)
-print(y_statistic)
-print(len(y_statistic))
 
-print(len(x_statistic))
+dfstatistic.reset_index(inplace=True)
+dfstatistic.rename(columns={"index": "Country"}, inplace=True)
+y_statistic = dfstatistic['statName']
+
 
 plt.figure(figsize=(16,14))
-plt.scatter(statistic["Country"],y_statistic)
+plt.plot(dfstatistic["Country"], y_statistic)
+
 plt.xticks(rotation=45, ha='right')
+plt.title("Ball Possession")
+plt.xlabel("Teams")
+plt.ylabel("Ball Posession (%)")
 
-plt.title("Ball Possession vs Defensive Pressure")
 
-
-plot_path = os.path.join("images", "my_plot.png")
+plot_path = os.path.join("images", "possession.png")
 plt.savefig(plot_path)
 plt.show()
