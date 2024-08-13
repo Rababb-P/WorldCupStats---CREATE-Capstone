@@ -4,7 +4,7 @@ import os
 
 os.makedirs("images", exist_ok=True)
 
-df = pd.read_csv('/Users/rababbpannu/Downloads/Fifa_world_cup_matches.csv')
+df = pd.read_csv(r"/Users/jeevansanchez/create2024/Fifa_world_cup_matches.csv")
 
 
 x = df.index
