@@ -1,0 +1,57 @@
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+  
+  .hero {
+    margin-top: 150px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 10%;
+    background-color: black;
+    opacity: 0; /* Start with the element hidden */
+    transition: opacity 1s ease-in-out;
+  }
+  
+  .hero-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+  
+  .hero-text {
+    margin-left: 50px;
+  }
+  
+  .hero-text h1 {
+    font-size: 2.5rem;
+    color: #beb4b4;
+  }
+  
+  .hero-text p {
+    font-size: 1.2rem;
+    color: #ffffff;
+  }
+  
+  .fade-in {
+    animation: fadeIn 1s forwards;
+  }
+  
+  .fade-out {
+    animation: fadeOut 1s forwards;
+  }
+  
