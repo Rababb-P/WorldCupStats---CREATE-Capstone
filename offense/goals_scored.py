@@ -1,5 +1,8 @@
 import matplotlib.pyplot as plt 
 import pandas as pd
+import os 
+
+os.makedirs("images", exist_ok=True)
 
 df = pd.read_csv(r"/Users/jeevansanchez/create2024/Fifa_world_cup_matches.csv")
 # change inner brackets to "Fifa_world_cup_matches.csv"
@@ -46,4 +49,6 @@ plt.xlabel("Teams")
 plt.ylabel("Goals Scored")
 
 
+plot_path = os.path.join("images", "goals.png")
+plt.savefig(plot_path)
 plt.show()
