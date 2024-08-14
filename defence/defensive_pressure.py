@@ -45,6 +45,8 @@ dfstatistic['Average Defensive Pressure'] = dfstatistic['Total Defensive Pressur
 dfstatistic.reset_index(inplace=True)
 dfstatistic.rename(columns={"index": "Country"}, inplace=True)
 
+data = dfstatistic[['Country', 'Average Defensive Pressure']]
+print(round(data))
 
 plt.figure(figsize=(16,19))
 plt.bar(dfstatistic["Country"], dfstatistic['Average Defensive Pressure'], color='skyblue')
