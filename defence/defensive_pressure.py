@@ -1,13 +1,18 @@
+
 # Defensive Pressure Graph
 
 import matplotlib.pyplot as plt 
 import seaborn as sns
 import pandas as pd
 import os 
+import matplotlib.font_manager as fm
 
 os.makedirs("images", exist_ok=True)
 
-df = pd.read_csv(r"C:\Users\Jeevan\VSCode\uoft_create\Fifa_world_cup_matches.csv")
+df = pd.read_csv(r"/Users/jeevansanchez/create2024/Fifa_world_cup_matches.csv")
+
+font_path = '/Users/jeevansanchez/Downloads/Poppins/Poppins-SemiBold copy.ttf'
+prop = fm.FontProperties(fname=font_path)
 
 games_played_team1 = df['team1'].value_counts()
 games_played_team2 = df['team2'].value_counts()
@@ -48,15 +53,19 @@ dfstatistic.rename(columns={"index": "Country"}, inplace=True)
 data = dfstatistic[['Country', 'Average Defensive Pressure']]
 print(round(data))
 
-plt.figure(figsize=(16,19))
-plt.bar(dfstatistic["Country"], dfstatistic['Average Defensive Pressure'], color='skyblue')
 
-plt.xticks(rotation=45, ha='right')
-plt.title("Defensive Pressures Applied")
-plt.xlabel("Teams")
-plt.ylabel("Defensive Pressure")
+plt.figure(figsize=(16,19), facecolor= 'black')
+plt.bar(dfstatistic["Country"], dfstatistic['Average Defensive Pressure'], color='#f8f6ee')
+plt.gca().set_facecolor('black')
+plt.gca().spines['bottom'].set_color('white')
+plt.gca().spines['left'].set_color('white')
+
+plt.xticks(rotation=45, ha='right', color = 'white')
+plt.title("Average Defensive Pressures Applied", fontproperties = prop, fontsize = 22, color = 'white' )
+plt.xlabel("Teams", fontproperties = prop, fontsize = 22, color = 'white' )
+plt.ylabel("Defensive Pressure", fontproperties = prop, fontsize = 22, color = 'white' )
 
 
-plot_path = os.path.join("images", "possession.png")
+plot_path = os.path.join("images", "defensive_pressures.png")
 plt.savefig(plot_path)
 plt.show()
